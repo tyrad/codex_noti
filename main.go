@@ -56,7 +56,7 @@ func main() {
 	}
 
 	// 组装通知文案
-	title := "AI处理完成通知"
+	title := "Codex Task Completed"
 	subtitle := composeSubtitle(ev)
 	body := composeBody(ev)
 
@@ -91,17 +91,17 @@ func composeSubtitle(ev Event) string {
 	return fmt.Sprintf("turn %s • thread %s", tid, th)
 }
 
-// composeBody 优先展示“问题 + AI 回复”，缺失时回退到工作目录提示
+// composeBody 优先展示"问题 + AI 回复"，缺失时回退到工作目录提示
 func composeBody(ev Event) string {
 	question := strings.TrimSpace(strings.Join(ev.InputMessages, " "))
 	if question == "" {
-		question = "(无)"
+		question = "(none)"
 	}
 	answer := strings.TrimSpace(ev.LastAssistantMessage)
 	if answer == "" {
-		answer = "(无回复)"
+		answer = "(no reply)"
 	}
-	return fmt.Sprintf("您的问题：%s\nAI回复：%s", question, answer)
+	return fmt.Sprintf("Question: %s\nReply: %s", question, answer)
 }
 
 // sendNotification 优先使用 terminal-notifier，缺失或失败时回退 AppleScript
