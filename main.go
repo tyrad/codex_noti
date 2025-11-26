@@ -93,7 +93,10 @@ func composeSubtitle(ev Event) string {
 
 // composeBody 优先展示"问题 + AI 回复"，缺失时回退到工作目录提示
 func composeBody(ev Event) string {
-	question := strings.TrimSpace(strings.Join(ev.InputMessages, " "))
+	question := ""
+	if n := len(ev.InputMessages); n > 0 {
+		question = strings.TrimSpace(ev.InputMessages[n-1])
+	}
 	if question == "" {
 		question = "(none)"
 	}
