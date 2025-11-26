@@ -48,3 +48,7 @@ notify = ["/Users/you/.codex/codex-noti"]
 2. Parses user question + AI reply from JSON
 3. Sends notification via terminal-notifier (with iTerm URL) or AppleScript
 4. On click: AppleScript finds matching iTerm session by UUID and activates it
+
+---
+
+If this project helps you, please ⭐ star it on GitHub. Thanks!

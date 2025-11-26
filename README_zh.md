@@ -48,3 +48,7 @@ notify = ["/Users/you/.codex/codex-noti"]
 2. 解析 JSON 中的用户问题 + AI 回复
 3. 通过 terminal-notifier(附带 iTerm URL) 或 AppleScript 发送通知
 4. 点击通知: AppleScript 根据 UUID 查找匹配的 iTerm 会话并激活
+
+---
+
+如果这个项目对你有帮助,请在 GitHub 上 ⭐ star 一下,谢谢!
