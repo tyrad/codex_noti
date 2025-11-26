@@ -138,6 +138,12 @@ func sendNotification(title, subtitle, body string) error {
 
 // buildExecuteArg 如果设置了 ITERM_ACTIVATE_SCRIPT 且存在 ITERM_* 环境变量，则构造点击后激活 iTerm 的命令
 func buildExecuteArg() string {
+	// 必须在 iTerm2 环境中运行才启用点击跳转
+	sess := os.Getenv("ITERM_SESSION_ID")
+	if sess == "" {
+		return ""
+	}
+
 	script := os.Getenv("ITERM_ACTIVATE_SCRIPT")
 	// 默认查找可执行同目录下的 scripts/bring_iterm.scpt
 	if script == "" {
@@ -150,17 +156,7 @@ func buildExecuteArg() string {
 			}
 		}
 	}
-	sess := os.Getenv("ITERM_SESSION_ID")
-	if sess == "" {
-		// 回退：尝试通过 AppleScript 获取当前窗口的 session id
-		if out, err := exec.Command("osascript", "-e", `tell application "iTerm2" to id of current session of current tab of current window`).CombinedOutput(); err == nil {
-			sess = strings.TrimSpace(string(out))
-		}
-	}
 	if script == "" {
-		return ""
-	}
-	if sess == "" {
 		return ""
 	}
 	if _, err := os.Stat(script); err != nil {
