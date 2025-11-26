@@ -1,5 +1,7 @@
 # go-codex-noti
 
+[中文文档](README_zh.md)
+
 macOS notification trigger for [OpenAI Codex](https://github.com/openai/codex) with iTerm2 integration.
 
 **Purpose**: Send macOS notifications when Codex tasks complete. Only supports macOS. When running in iTerm2, clicking the notification jumps back to the original iTerm tab (may not work if iTerm2 is minimized).

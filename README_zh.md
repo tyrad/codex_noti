@@ -1,5 +1,7 @@
 # go-codex-noti
 
+[English](README.md)
+
 为 [OpenAI Codex](https://github.com/openai/codex) 提供 macOS 通知触发器,支持 iTerm2 集成。
 
 **用途**: 在 Codex 任务完成后向 macOS 电脑发送通知。仅支持 macOS 环境。如果在 iTerm2 中运行,点击通知可以返回之前的 iTerm tab(iTerm2 最小化时可能不支持)。
